@@ -1,0 +1,128 @@
+﻿@* @model VehicleRentalSys.Models.Vehicle *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Edit"; *@
+@* } *@
+
+@* <h1>Edit</h1> *@
+
+@* <h4>Vehicle</h4> *@
+@* <hr /> *@
+@* <div class="row"> *@
+@*     <div class="col-md-4"> *@
+@*         <form asp-action="Edit"> *@
+@*             <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+@*             <input type="hidden" asp-for="VehicleId" /> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Model" class="control-label"></label> *@
+@*                 <input asp-for="Model" class="form-control" /> *@
+@*                 <span asp-validation-for="Model" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Brand" class="control-label"></label> *@
+@*                 <input asp-for="Brand" class="form-control" /> *@
+@*                 <span asp-validation-for="Brand" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Type" class="control-label"></label> *@
+@*                 <input asp-for="Type" class="form-control" /> *@
+@*                 <span asp-validation-for="Type" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="RentalPricePerDay" class="control-label"></label> *@
+@*                 <input asp-for="RentalPricePerDay" class="form-control" /> *@
+@*                 <span asp-validation-for="RentalPricePerDay" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group form-check"> *@
+@*                 <label class="form-check-label"> *@
+@*                     <input class="form-check-input" asp-for="IsAvailable" /> @Html.DisplayNameFor(model => model.IsAvailable) *@
+@*                 </label> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <input type="submit" value="Save" class="btn btn-primary" /> *@
+@*             </div> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@
+
+@* <div> *@
+@*     <a asp-action="GetAllVehicles">Back to List</a> *@
+@* </div> *@
+
+@* @section Scripts { *@
+@*     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} *@
+@* } *@
+
+
+
+@model VehicleRentalSys.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Edit Vehicle";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4 p-4 bg-light">
+        <div class="text-center mb-4">
+            <h2 class="text-primary fw-bold">Edit Vehicle</h2>
+            <p class="text-muted">Update the vehicle details below</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form asp-action="Edit" class="needs-validation" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger d-none"></div>
+                    <input type="hidden" asp-for="VehicleId" />
+
+                    <div class="mb-3">
+                        <label asp-for="Model" class="form-label fw-bold">Model</label>
+                        <input asp-for="Model" class="form-control rounded-3 shadow-sm" placeholder="Enter vehicle model" required />
+                        <span asp-validation-for="Model" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Brand" class="form-label fw-bold">Brand</label>
+                        <input asp-for="Brand" class="form-control rounded-3 shadow-sm" placeholder="Enter brand name" required />
+                        <span asp-validation-for="Brand" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Type" class="form-label fw-bold">Type</label>
+                        <input asp-for="Type" class="form-control rounded-3 shadow-sm" placeholder="Enter vehicle type" required />
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="RentalPricePerDay" class="form-label fw-bold">Rental Price Per Day</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-success text-white fw-bold">₹</span>
+                            <input asp-for="RentalPricePerDay" class="form-control rounded-3 shadow-sm" placeholder="Enter price per day" required />
+                        </div>
+                        <span asp-validation-for="RentalPricePerDay" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input shadow-sm" type="checkbox" asp-for="IsAvailable" />
+                        <label class="form-check-label fw-bold"> @Html.DisplayNameFor(model => model.IsAvailable) </label>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-4">
+                        <button type="submit" class="btn btn-success btn-lg me-3 px-4 shadow">
+                            <i class="fas fa-save"></i> Update
+                        </button>
+                        <a asp-action="GetAllVehicles" class="btn btn-outline-secondary btn-lg px-4 shadow">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

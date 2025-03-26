@@ -1,0 +1,88 @@
+﻿@* @model VehicleRentalSys.Models.User *@
+
+@* @{ *@
+@*     ViewData["Title"] = "GetUserById"; *@
+@* } *@
+
+@* <h1>GetUserById</h1> *@
+
+@* <div> *@
+@*     <h4>User</h4> *@
+@*     <hr /> *@
+@*     <dl class="row"> *@
+@*         <dt class = "col-sm-2"> *@
+@*             @Html.DisplayNameFor(model => model.Name) *@
+@*         </dt> *@
+@*         <dd class = "col-sm-10"> *@
+@*             @Html.DisplayFor(model => model.Name) *@
+@*         </dd> *@
+@*         <dt class = "col-sm-2"> *@
+@*             @Html.DisplayNameFor(model => model.Email) *@
+@*         </dt> *@
+@*         <dd class = "col-sm-10"> *@
+@*             @Html.DisplayFor(model => model.Email) *@
+@*         </dd> *@
+@*         <dt class = "col-sm-2"> *@
+@*             @Html.DisplayNameFor(model => model.Password) *@
+@*         </dt> *@
+@*         <dd class = "col-sm-10"> *@
+@*             @Html.DisplayFor(model => model.Password) *@
+@*         </dd> *@
+@*         <dt class = "col-sm-2"> *@
+@*             @Html.DisplayNameFor(model => model.Role) *@
+@*         </dt> *@
+@*         <dd class = "col-sm-10"> *@
+@*             @Html.DisplayFor(model => model.Role) *@
+@*         </dd> *@
+@*     </dl> *@
+@* </div> *@
+@* <div> *@
+@*     <a asp-action="Edit" asp-route-id="@Model?.UserId">Edit</a> | *@
+@*     <a asp-action="Index">Back to List</a> *@
+@* </div> *@
+
+
+@model VehicleRentalSys.Models.User
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>User Details</h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4 fw-bold">Name</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+                        <dt class="col-sm-4 fw-bold">Email</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+                        <dt class="col-sm-4 fw-bold">Password</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Password)</dd>
+
+                        <dt class="col-sm-4 fw-bold">Role</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Role)</dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Edit" asp-route-id="@Model?.UserId" class="btn btn-warning mx-2">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+}

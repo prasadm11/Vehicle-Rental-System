@@ -1,0 +1,111 @@
+﻿@* @model VehicleRentalSys.Models.Booking *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Edit Booking"; *@
+@* } *@
+
+@* <h1>Edit Booking</h1> *@
+@* <hr /> *@
+@* <div class="row"> *@
+@*     <div class="col-md-6"> *@
+@*         <form asp-action="Edit"> *@
+@*             <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+@*             <input type="hidden" asp-for="BookingId" /> *@
+
+@*             <div class="form-group"> *@
+@*                 <label asp-for="VehicleId" class="control-label"></label> *@
+@*                 <select asp-for="VehicleId" class="form-control" asp-items="ViewBag.VehicleId"></select> *@
+@*                 <span asp-validation-for="VehicleId" class="text-danger"></span> *@
+@*             </div> *@
+
+@*             <div class="form-group"> *@
+@*                 <label asp-for="StartDate" class="control-label"></label> *@
+@*                 <input asp-for="StartDate" class="form-control" type="date" /> *@
+@*                 <span asp-validation-for="StartDate" class="text-danger"></span> *@
+@*             </div> *@
+
+@*             <div class="form-group"> *@
+@*                 <label asp-for="EndDate" class="control-label"></label> *@
+@*                 <input asp-for="EndDate" class="form-control" type="date" /> *@
+@*                 <span asp-validation-for="EndDate" class="text-danger"></span> *@
+@*             </div> *@
+
+@*             <div class="form-group"> *@
+@*                 <label asp-for="TotalAmount" class="control-label"></label> *@
+@*                 <input asp-for="TotalAmount" class="form-control" readonly /> *@
+@*             </div> *@
+
+@*             <div class="form-group mt-3"> *@
+@*                 <input type="submit" value="Save Changes" class="btn btn-primary" /> *@
+@*                 <a asp-action="GetAllBookings" class="btn btn-secondary">Cancel</a> *@
+@*             </div> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@
+
+@* @section Scripts { *@
+@*     @{ *@
+@*         await Html.RenderPartialAsync("_ValidationScriptsPartial"); *@
+@*     } *@
+@* } *@
+
+
+@model VehicleRentalSys.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4 rounded">
+                <h2 class="text-center text-primary">✏️ Edit Booking</h2>
+                <hr />
+
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                    <input type="hidden" asp-for="BookingId" />
+
+                    <div class="mb-3">
+                        <label asp-for="VehicleId" class="form-label fw-bold">Vehicle</label>
+                        <select asp-for="VehicleId" class="form-select form-select-lg" asp-items="ViewBag.VehicleId"></select>
+                        <span asp-validation-for="VehicleId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="StartDate" class="form-label fw-bold">Start Date</label>
+                        <input asp-for="StartDate" class="form-control form-control-lg" type="date" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="EndDate" class="form-label fw-bold">End Date</label>
+                        <input asp-for="EndDate" class="form-control form-control-lg" type="date" />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TotalAmount" class="form-label fw-bold">Total Amount (₹)</label>
+                        <input asp-for="TotalAmount" class="form-control form-control-lg text-success fw-bold" readonly />
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="bi bi-check-circle"></i> Save Changes
+                        </button>
+                        <a asp-action="GetAllBookings" class="btn btn-danger btn-lg">
+                            <i class="bi bi-x-circle"></i> Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

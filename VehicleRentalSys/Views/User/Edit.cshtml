@@ -1,0 +1,114 @@
+﻿@* @model VehicleRentalSys.Models.User *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Edit"; *@
+@* } *@
+
+@* <h1>Edit</h1> *@
+
+@* <h4>User</h4> *@
+@* <hr /> *@
+@* <div class="row"> *@
+@*     <div class="col-md-4"> *@
+@*         <form asp-action="Edit"> *@
+@*             <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+@*             <input type="hidden" asp-for="UserId" /> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Name" class="control-label"></label> *@
+@*                 <input asp-for="Name" class="form-control" /> *@
+@*                 <span asp-validation-for="Name" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Email" class="control-label"></label> *@
+@*                 <input asp-for="Email" class="form-control" /> *@
+@*                 <span asp-validation-for="Email" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Password" class="control-label"></label> *@
+@*                 <input asp-for="Password" class="form-control" /> *@
+@*                 <span asp-validation-for="Password" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Role" class="control-label"></label> *@
+@*                 <input asp-for="Role" class="form-control" /> *@
+@*                 <span asp-validation-for="Role" class="text-danger"></span> *@
+@*             </div> *@
+@*             <div class="form-group"> *@
+@*                 <input type="submit" value="Save" class="btn btn-primary" /> *@
+@*             </div> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@
+
+@* <div> *@
+@*     <a asp-action="Index">Back to List</a> *@
+@* </div> *@
+
+@* @section Scripts { *@
+@*     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} *@
+@* } *@
+
+@model VehicleRentalSys.Models.User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Edit User</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="UserId" />
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-bold"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-bold"></label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="Enter email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label fw-bold"></label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Role" class="form-label fw-bold"></label>
+                            <select asp-for="Role" class="form-select">
+                                <option value="">Select Role</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Customer">Customer</option>
+                            </select>
+                            <span asp-validation-for="Role" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Save</button>
+                            <a asp-action="Index" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

@@ -1,0 +1,132 @@
+﻿@* @model VehicleRentalSys.Models.Booking *@
+
+@* @{ *@
+@*     ViewData["Title"] = "Create Booking"; *@
+@* } *@
+
+@* <h2>Create a Booking</h2> *@
+
+@* <form asp-action="Create" method="post"> *@
+@*     <div class="form-group"> *@
+@*         <label>User ID</label> *@
+@*         <input type="text" class="form-control" value="@Context.Session.GetInt32("UserId")" readonly /> *@
+@*         <input type="hidden" name="UserId" value="@Context.Session.GetInt32("UserId")" /> *@
+@*     </div> *@
+
+@*     <div class="form-group"> *@
+@*         <label>Vehicle</label> *@
+@*         <select asp-for="VehicleId" class="form-control" asp-items="ViewBag.VehicleId" id="vehicleDropdown" required> *@
+@*             <option value="">-- Select Vehicle --</option> *@
+@*         </select> *@
+@*     </div> *@
+
+@*     <div class="form-group"> *@
+@*         <label>Start Date</label> *@
+@*         <input type="date" asp-for="StartDate" class="form-control" id="startDate" required /> *@
+@*     </div> *@
+
+@*     <div class="form-group"> *@
+@*         <label>End Date</label> *@
+@*         <input type="date" asp-for="EndDate" class="form-control" id="endDate" required /> *@
+@*     </div> *@
+
+@*     <div class="form-group"> *@
+@*         <label>Total Amount</label> *@
+@*         <input type="text" asp-for="TotalAmount" class="form-control" id="totalAmount" readonly /> *@
+@*     </div> *@
+
+@*     <button type="submit" class="btn btn-primary">Book Vehicle</button> *@
+@* </form> *@
+
+@* @section Scripts { *@
+@*     <script> *@
+@*         $(document).ready(function () { *@
+@*             $("#vehicleDropdown, #startDate, #endDate").change(function () { *@
+@*                 var vehicleId = $("#vehicleDropdown").val(); *@
+@*                 var startDate = new Date($("#startDate").val()); *@
+@*                 var endDate = new Date($("#endDate").val()); *@
+
+@*                 if (vehicleId && startDate && endDate && endDate > startDate) { *@
+@*                     $.getJSON("/Booking/GetVehicleRentalPrice", { vehicleId: vehicleId }, function (data) { *@
+@*                         var days = (endDate - startDate) / (1000 * 60 * 60 * 24); *@
+@*                         var total = days * data.rentalPrice; *@
+@*                         $("#totalAmount").val(total > 0 ? total : 0); *@
+@*                     }); *@
+@*                 } else { *@
+@*                     $("#totalAmount").val(""); *@
+@*                 } *@
+@*             }); *@
+@*         }); *@
+@*     </script> *@
+@* } *@
+
+
+
+@model VehicleRentalSys.Models.Booking
+
+@{
+    ViewData["Title"] = "Create Booking";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded">
+        <h2 class="text-center mb-4 text-primary">🚗 Create a Booking</h2>
+
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label class="form-label fw-bold"><i class="bi bi-person"></i> User ID</label>
+                <input type="text" class="form-control bg-light" value="@Context.Session.GetInt32("UserId")" readonly />
+                <input type="hidden" name="UserId" value="@Context.Session.GetInt32("UserId")" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold"><i class="bi bi-car-front-fill"></i> Select Vehicle</label>
+                <select asp-for="VehicleId" class="form-select" asp-items="ViewBag.VehicleId" id="vehicleDropdown" required>
+                    <option value="">-- Select Vehicle --</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold"><i class="bi bi-calendar-event"></i> Start Date</label>
+                    <input type="date" asp-for="StartDate" class="form-control" id="startDate" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold"><i class="bi bi-calendar-event-fill"></i> End Date</label>
+                    <input type="date" asp-for="EndDate" class="form-control" id="endDate" required />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold"><i class="bi bi-cash"></i> Total Amount</label>
+                <input type="text" asp-for="TotalAmount" class="form-control bg-light fw-bold text-success" id="totalAmount" readonly />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 fw-bold py-2">
+                <i class="bi bi-check-circle-fill"></i> Book Vehicle
+            </button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#vehicleDropdown, #startDate, #endDate").change(function () {
+                var vehicleId = $("#vehicleDropdown").val();
+                var startDate = new Date($("#startDate").val());
+                var endDate = new Date($("#endDate").val());
+
+                if (vehicleId && startDate && endDate && endDate > startDate) {
+                    $.getJSON("/Booking/GetVehicleRentalPrice", { vehicleId: vehicleId }, function (data) {
+                        var days = (endDate - startDate) / (1000 * 60 * 60 * 24);
+                        var total = days * data.rentalPrice;
+                        $("#totalAmount").val(total > 0 ? total.toFixed(2) : 0);
+                    });
+                } else {
+                    $("#totalAmount").val("");
+                }
+            });
+        });
+    </script>
+}

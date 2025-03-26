@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="video-container">
+    <video autoplay muted loop class="video-bg">
+        <source src="~/videos/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="overlay d-flex flex-column justify-content-center align-items-center text-white text-center">
+    <h1 class="display-3 fw-bold animate__animated animate__fadeInDown">
+         Welcome to Vehicle Rental System
+    </h1>
+    <p class="lead animate__animated animate__fadeInUp">
+        Find and rent your perfect vehicle with ease and convenience!
+    </p>
+    <div class="mt-4 d-flex gap-3">
+        <a asp-controller="Account" asp-action="Login" class="btn btn-lg btn-light px-4 py-2 shadow-lg">
+            <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+        <a asp-controller="User" asp-action="Create" class="btn btn-lg btn-outline-light px-4 py-2 shadow-lg">
+            <i class="fas fa-user-plus"></i> Register
+        </a>
+    </div>
+</div>
+
+<!-- External Styles & Animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="stylesheet" href="~/css/homeindex.css">
