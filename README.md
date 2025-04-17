@@ -25,7 +25,7 @@ The Vehicle Rental System is a web application built using **ASP.NET Core MVC wi
 
 ### 1️⃣ Clone the repository
 ```sh
-git clone https://github.com/yourusername/VehicleRentalSystem.git
+git clone https://github.com/prasadm11/VehicleRentalSystem.git
 cd VehicleRentalSystem
 ```
 
